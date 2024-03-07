@@ -1,0 +1,95 @@
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 0;
+  text-align: center;
+  border-radius: 0.5vh;
+}
+body {
+  background-color: #8ecae6;
+}
+button {
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: black;
+  background-color: #219ebc;
+}
+button:hover {
+  opacity: 85%;
+}
+header {
+  padding: 10px;
+}
+.categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+#category {
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+#category option {
+  cursor: pointer;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 20px 0 20px;
+}
+.h2 {
+  padding: 5px;
+}
+.taskSections h2 {
+  padding: 10px;
+}
+.flexBox {
+  background-color: #023047;
+  width: 240px;
+  height: 300px;
+  overflow: auto;
+  border-radius: 1vh;
+}
+
+form > input {
+  background-color: #fefae0;
+  color: black;
+  border: none;
+  padding: 4px;
+}
+.taskForm {
+  display: flex;
+  flex-flow: column;
+  width: 95%;
+  gap: 5px;
+  margin: 0 auto;
+  margin-top: 2px;
+}
+.taskForm p {
+  margin-top: 5px;
+}
+.taskForm:last-child {
+  margin-bottom: 2px;
+}
+.taskForm:hover {
+  opacity: 95%;
+}
+.UX {
+  background-color: #ffb703;
+}
+.devFrontend {
+  background-color: #fb8500;
+}
+.devBackend {
+  background-color: #ffafcc;
+}
+.doneBtn {
+  background-color: #4caf50;
+}
+.deleteBtn {
+  background-color: #b39ddb;
+}
