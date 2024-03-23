@@ -9,6 +9,8 @@
     <title>Scrum Board</title>
   </head>
   <body>
+    <!--  Title of the page, colorscheme for the categories and 
+          the form to create a new task -->
     <header>
       <h1>Scrum Board</h1>
       <form id="newTaskForm">
@@ -17,6 +19,7 @@
           name="newTask"
           id="newTask"
           placeholder="Enter task"
+          required
         />
         <select name="category" id="category">
           <option value="UX">UX</option>
@@ -36,6 +39,7 @@
       <h2>In Progress</h2>
       <h2>Done</h2>
     </div>
+    <!-- Container and sections for the different statuses of the tasks -->
     <main id="mainContainer" class="flex">
       <section id="todo" class="flexBox"></section>
       <section id="inProgress" class="flexBox"></section>

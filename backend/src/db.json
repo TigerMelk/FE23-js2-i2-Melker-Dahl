@@ -3,34 +3,34 @@
     {
       "todo": [
         {
-          "id": "33e42519-289c-4d01-9aea-9072231d96c2",
-          "task": "ayo",
+          "id": "d9e02d2b-f535-4afd-8760-e5916bd898e4",
+          "task": "hej",
           "category": "UX",
-          "assigned": "",
-          "status": "todo"
-        },
-        {
-          "id": "b152dfd9-21aa-4d01-bcf0-ac4fa4ea3a7c",
-          "task": "hejhej",
-          "category": "devFrontend",
           "assigned": "",
           "status": "todo"
         }
       ],
       "inProgress": [
         {
-          "id": "d7e0c544-057f-4b74-8a12-f1e103211271",
-          "task": "bajsa",
-          "category": "UX",
-          "assigned": "poopi",
+          "id": "2118759f-7451-4936-bb69-9c9c237d68ab",
+          "task": "asdf",
+          "category": "devFrontend",
+          "assigned": "melker",
+          "status": "inProgress"
+        },
+        {
+          "id": "0068cecf-5bf8-46a7-a5e3-6b653933f296",
+          "task": "asdf",
+          "category": "devFrontend",
+          "assigned": "asd",
           "status": "inProgress"
         }
       ],
       "done": [
         {
-          "id": "b6ad82a7-9e91-4ed4-9571-d20dd815b6d0",
-          "task": "hahaha",
-          "category": "devBackend",
+          "id": "99adcc1c-a8c3-4348-a6bc-8c8597bc27f7",
+          "task": "yoyo",
+          "category": "UX",
           "assigned": "asdf",
           "status": "done"
         }

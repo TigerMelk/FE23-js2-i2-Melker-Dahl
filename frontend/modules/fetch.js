@@ -1,56 +1,32 @@
+// fetch functions for get, post, patch and delete requests
 async function getTasks(id) {
-  let url = "http://localhost:3000/api/tasks";
-  if (id) {
-    url += `${id}`;
-  }
-  const response = await fetch(url);
-  if (!response.ok) {
-    return { error: "failed to fetch" };
-  }
-  const tasks = await response.json();
-  return tasks;
+  const path = id ? id : "";
+  return await fetchShortcut(path, "GET");
 }
 async function postTask(taskData) {
-  const url = "http://localhost:3000/api/tasks";
-  const options = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(taskData),
-  };
-  const response = await fetch(url, options);
-  if (!response.ok) {
-    return { error: "failed to fetch" };
-  }
-  const responseData = await response.json();
-  console.log(responseData);
-  return responseData;
+  return await fetchShortcut("", "Post", taskData);
 }
-async function patchTask(taskToChange, taskData) {
-  const url = `http://localhost:3000/api/tasks/${taskToChange}`;
-  const options = {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(taskData),
-  };
-  const response = await fetch(url, options);
-  if (!response.ok) {
-    return { error: "Failed to fetch" };
-  }
-  const responseData = await response.json();
-  console.log(responseData);
-  return responseData;
+async function patchTask(taskId, taskData) {
+  return await fetchShortcut(taskId, "PATCH", taskData);
 }
 async function deleteTask(taskId) {
-  const url = `http://localhost:3000/api/tasks/${taskId}`;
+  return await fetchShortcut(taskId, "DELETE");
+}
+
+async function fetchShortcut(path, method, data = null) {
+  let url = `http://localhost:3000/api/tasks/${path}`;
   const options = {
-    method: "DELETE",
+    method: method,
+    headers: { "Content-Type": "application/json" },
+    body: data ? JSON.stringify(data) : null,
   };
   const response = await fetch(url, options);
   if (!response.ok) {
-    return { error: "Failed to fetch deleteTask" };
+    return { error: `Failed to fetch ${method} request` };
   }
   const responseData = await response.json();
   console.log(responseData);
   return responseData;
 }
+
 export { getTasks, postTask, patchTask, deleteTask };

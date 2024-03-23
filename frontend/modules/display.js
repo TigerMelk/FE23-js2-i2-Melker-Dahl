@@ -1,3 +1,5 @@
+// Gets the sections and fills them with forms
+// depending on the information retrieved from the server side.
 function displayTasks(tasks) {
   const todoSection = document.getElementById("todo");
   const inProgressSection = document.getElementById("inProgress");
@@ -24,9 +26,12 @@ function displayTasks(tasks) {
     });
   }
 }
+// clears the section of either 'todo', 'inProgress' or 'done'
+// to then fill it with the new information
 function clearSection(section) {
   section.innerHTML = "";
 }
+// creates the forms depending on the status of the task
 function createTaskEl(task) {
   const form = document.createElement("form");
   form.id = task.id;

@@ -9,11 +9,13 @@ async function writeDatabase(tasks) {
   const done = await fs.writeFile("./src/db.json", JSON.stringify(db, null, 2));
   return done;
 }
+// reads the database and returns the tasks array
 async function getTasks() {
   const db = await readDatabase();
   const { tasks } = db;
   return tasks;
 }
+// reads the database and loops all tasks and returns the individuell task with the referenced task.id
 async function getTask(id) {
   const tasks = await getTasks();
   for (const status of ["todo", "inProgress", "done"]) {
@@ -22,6 +24,7 @@ async function getTask(id) {
   }
   return { message: "task not found" };
 }
+// adds a new task to the tasks array in the database, setting the task.status to 'todo'
 async function addTask(task) {
   const newTask = { id: crypto.randomUUID(), ...task };
   if (!newTask.hasOwnProperty("assigned")) {
@@ -35,6 +38,9 @@ async function addTask(task) {
   await writeDatabase(tasks);
   return newTask;
 }
+// for a patchrequest, finds the task to patch
+// then change it's status to either 'inProgress' or 'done'
+// depending on where the task originated and move it to that array
 async function updateTask(taskId, assigned) {
   const tasks = await getTasks();
   const taskList = tasks[0];
@@ -58,6 +64,7 @@ async function updateTask(taskId, assigned) {
   await writeDatabase(tasks);
   return taskList;
 }
+// finds the task using task.id then removes it from the array
 async function deleteTask(taskId) {
   const tasks = await getTasks();
   const taskList = tasks[0];

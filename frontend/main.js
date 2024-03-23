@@ -1,11 +1,11 @@
 import { getTasks, postTask, patchTask, deleteTask } from "./modules/fetch.js";
 import { displayTasks } from "./modules/display.js";
 getTasks().then((tasks) => {
-  setTimeout(() => {
-    displayTasks(tasks);
-  }, 100);
+  displayTasks(tasks);
 });
-
+// Gets the form for adding a new task and
+// uses a post request to update the server database,
+// then retrieves the information to show the tasks
 const form = document.getElementById("newTaskForm");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -19,13 +19,14 @@ form.addEventListener("submit", (event) => {
   postTask(taskData)
     .then(() => getTasks())
     .then((tasks) => {
-      setTimeout(() => {
-        displayTasks(tasks);
-      }, 100);
+      displayTasks(tasks);
     });
   taskInput.value = "";
 });
-
+// Gets the forms/ or tasks/ in the sections,
+// adds eventlisteners to each
+// and sends patchrequests depending on what was submitted
+// then updates the tasks with the changes made
 const mainContainer = document.getElementById("mainContainer");
 mainContainer.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -37,36 +38,32 @@ mainContainer.addEventListener("submit", (event) => {
 
     switch (status) {
       case "todo":
-        const assigned =
-          submittedForm.querySelector("input[type='text']").value;
-        const assignedData = {
-          assigned: assigned,
-        };
-        patchTask(taskId, assignedData)
-          .then(() => getTasks())
-          .then((tasks) => {
-            setTimeout(() => {
+        const assignedInput = submittedForm.querySelector("input[type='text']");
+        assignedInput.setAttribute("required", "");
+        const assigned = assignedInput.value;
+        if (assigned !== "") {
+          const assignedData = {
+            assigned: assigned,
+          };
+          patchTask(taskId, assignedData)
+            .then(() => getTasks())
+            .then((tasks) => {
               displayTasks(tasks);
-            }, 100);
-          });
-
+            });
+        }
         break;
       case "inProgress":
         patchTask(taskId)
           .then(() => getTasks())
           .then((tasks) => {
-            setTimeout(() => {
-              displayTasks(tasks);
-            }, 100);
+            displayTasks(tasks);
           });
         break;
       case "done":
         deleteTask(taskId)
           .then(() => getTasks())
           .then((tasks) => {
-            setTimeout(() => {
-              displayTasks(tasks);
-            }, 100);
+            displayTasks(tasks);
           });
         break;
       default:
